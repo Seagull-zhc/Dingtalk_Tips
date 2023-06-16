@@ -3,7 +3,7 @@ from dingtalkchatbot.chatbot import DingtalkChatbot
 from configparser import ConfigParser
 import sys
 import io
-import time
+import datetime
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
@@ -59,8 +59,8 @@ def read_config(cfg_file):
     return cfg
 
 
-# 获取当前时间
-time = time.time()
+# 获取当前时间：年月日
+time = datetime.datetime.now().strftime('%Y-%m-%d ')
 
 filepath = "index.ini"
 # 取cfg文件值
@@ -78,7 +78,7 @@ aPhone = aList[times % alength]
 webhook_release = 'https://oapi.dingtalk.com/robot/send?access_token' \
                   '=06780fde19e6357fa35dc412ead970cfa3ce8d6555db36c9ce25b54a5ab58334 '
 # 信息参数配置
-msg = '%d % time \n''🤖️值班提醒，本周值班轮到你啦～\n 值班表：https://wepie.yuque.com/we_play/fe9ghq/qcyhx3'
+msg = time + '\n🤖️值班提醒，本周值班轮到你啦～\n 值班表：https://wepie.yuque.com/we_play/fe9ghq/qcyhx3'
 
 title = '🤖️值班提醒'
 text = '点击查看本周值班信息'
